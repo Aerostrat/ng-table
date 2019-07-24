@@ -85,6 +85,36 @@ describe('ngTableDefaultGetData', () => {
                 expect(actualResults).toEqual(expectedData);
             });
 
+            it('null property sort ascending', () => {
+                // given
+                tableParams.sorting({ name: 'asc' });
+                // when
+                var data = [
+                    { name: 'null' }, { name: 'undefined' }, { name: null }, { name: undefined }
+                ];
+                var actualResults = ngTableDefaultGetData(data, tableParams);
+                // then
+                var expectedData = [
+                    { name: 'null' }, { name: 'undefined' }, { name: null }, { name: undefined }
+                ];
+                expect(actualResults).toEqual(expectedData);
+            });
+
+            it('null property sort descending', () => {
+                // given
+                tableParams.sorting({ name: 'desc' });
+                // when
+                var data = [
+                    { name: 'null' }, { name: 'undefined' }, { name: null }, { name: undefined }
+                ];
+                var actualResults = ngTableDefaultGetData(data, tableParams);
+                // then
+                var expectedData = [
+                    { name: undefined }, { name: null }, { name: 'undefined' }, { name: 'null' }
+                ];
+                expect(actualResults).toEqual(expectedData);
+            });
+
         });
 
         describe('filters', () => {

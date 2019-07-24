@@ -21,7 +21,6 @@ test/**/*.js.map
 test/**/*.js
 !test/index.js
 !test/index.d.ts
-bundles
 build
 build-stats.json
 api-docs
